@@ -133,8 +133,10 @@ class BaseCustomField(fields._BaseField, metaclass=_FieldsRegisterMeta):
         if data is None:
             return None
         for field in data:
-            if field.get("field_name", "error") == self._name:
+            if field.get('field_id') == self._field_id:
                 return field
+            # if field.get("field_name", "error") == self._name:
+            #     return field
             if self._code and field.get("field_code") == self._code:
                 return field
         return None
